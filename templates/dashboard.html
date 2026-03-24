@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Powered Missing Person Detection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <header>
+    <h1>AI-Powered Missing Person Detection System</h1>
+    <div class="status-wrap">
+      <span id="statusDot" class="dot stopped"></span>
+      <span id="statusText">Stopped</span>
+      <span id="fpsBadge">FPS: 0.0</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="video-panel">
+      <div class="controls">
+        <input id="sourceInput" type="text" value="0" placeholder="0 / rtsp://... / http://..." />
+        <button id="startBtn">Start Stream</button>
+        <button id="stopBtn" class="danger">Stop Stream</button>
+      </div>
+      <img id="stream" src="" alt="Live stream" />
+    </section>
+
+    <section class="side-panel">
+      <div class="card">
+        <h2>Register Person</h2>
+        <form id="registerForm">
+          <input name="name" id="nameInput" placeholder="Person Name" required />
+          <input name="image" id="imageInput" type="file" accept="image/*" required />
+          <button type="submit">Register</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Detection Logs</h2>
+        <ul id="logsList"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
